@@ -3,5 +3,5 @@ process.stdin.on("data", (data) => {
         process.exit();
     } else {
         process.stdout.write(`you did type ${data}`);
-    }    
+    }
 });
