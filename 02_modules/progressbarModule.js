@@ -1,4 +1,5 @@
 let currentIndex = 0;
+let interval;
 
 function getNextSymbol(symbols = ["-", "\\", "|", "/"]) {
     if (currentIndex == symbols.length) {
@@ -10,18 +11,20 @@ function getNextSymbol(symbols = ["-", "\\", "|", "/"]) {
 }
 
 const startProgressbar = function (tickInSeconds, array) {
-    setInterval(function () {
+    interval = setInterval(function () {
         let symbol = getNextSymbol(array);
         process.stdout.clearLine();
         process.stdout.cursorTo(0);
         process.stdout.write(symbol);
 
     }, tickInSeconds * 1000);
-
 }
 
+const stopInterval = () => clearInterval(interval);
+
 module.exports = {
-    startProgressbar
+    startProgressbar,
+    stopInterval
 };
 
 
